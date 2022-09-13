@@ -5,7 +5,7 @@ import {
   Link,
 } from 'react-router-dom';
 // import cls from './App.module.scss';
-import Home from './components/Home'
+import { Home } from './components/Home'
 // import Squares from './components/Squares'
 import { Todo } from './components/Todo'
 // import Ishop from './components/Ishop'
