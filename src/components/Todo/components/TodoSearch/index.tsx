@@ -9,7 +9,7 @@ type Props = {
 }
 
 const TodoSearch: React.FC<Props> = ({ onSearch }) => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const changeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)

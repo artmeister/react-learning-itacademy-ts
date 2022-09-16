@@ -4,15 +4,16 @@ import List from '@mui/material/List';
 
 import TodoListItem from '../TodoListItem';
 
+import { ListData } from '../..';
+
 type Props = {
-  todoListItems: Array<any>,
+  todoListItems: ListData[],
   onToggle: Function,
   onDelete: Function,
   toggleFavorite: Function
 }
 
 const TodoList: React.FC<Props> = ({ todoListItems, onToggle, onDelete, toggleFavorite }) => {
-
   return (
     <List className={cls.tasks}>
       {todoListItems.map(item => {

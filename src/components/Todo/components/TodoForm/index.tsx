@@ -13,7 +13,7 @@ type Props = {
 
 
 const TodoForm: React.FC<Props> = ({ onAdded }) => {
-  const [taskName, setTaskName] = useState('');
+  const [taskName, setTaskName] = useState<string>('');
 
   const onAddedTask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

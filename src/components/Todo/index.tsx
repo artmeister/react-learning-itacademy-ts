@@ -13,17 +13,17 @@ import TodoFilter from './components/TodoFilter';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
-type Props = {
-  id: Number,
-  value?: String,
-  text: String,
-  important: Boolean,
-  done: Boolean
+export interface ListData {
+  key?: number,
+  id: number,
+  value?: string,
+  text: string,
+  important: boolean,
+  done: boolean
 }
 
 const Todo = () => {
-
-  const [todoList, setTodoList] = useState<Props[]>([
+  const [todoList, setTodoList] = useState<ListData[]>([
     {
       id: 1,
       text: 'Task 1',
@@ -37,12 +37,12 @@ const Todo = () => {
       done: false
     }
   ]);
-  const [filterList, setFilteList] = useState(todoList);
-  const [count, setCount] = useState(100);
+  const [filterList, setFilteList] = useState<ListData[]>(todoList);
+  const [count, setCount] = useState<number>(100);
   const done = todoList.filter((todo) => todo.done).length;
   const important = todoList.filter((todo) => todo.important).length;
 
-  const onToggle = (id: Number) => {
+  const onToggle = (id: number) => {
     const todoElements = todoList.map((todo) => {
       if (todo.id === id) todo.done = !todo.done;
 
@@ -52,13 +52,13 @@ const Todo = () => {
     setTodoList(todoElements);
   }
 
-  const onDelete = (id: Number) => {
+  const onDelete = (id: number) => {
     const todoDeleting = todoList.filter((todo) => todo.id !== id);
 
     setTodoList(todoDeleting);
   }
 
-  const toggleFavorite = (id: Number) => {
+  const toggleFavorite = (id: number) => {
     const todoElements = todoList.map((todo) => {
       if (todo.id === id) todo.important = !todo.important;
 
@@ -68,8 +68,9 @@ const Todo = () => {
     setTodoList(todoElements);
   }
 
-  const onAdded = (value: String) => {
-    setCount(prevCount => ++prevCount)
+  const onAdded = (value: string) => {
+    setCount((prevCount: number) => ++prevCount);
+
     const addTodos = [...todoList,
       {
         id: count,
@@ -77,14 +78,14 @@ const Todo = () => {
         important: true,
         done: false
       }
-    ]
+    ];
 
     setTodoList(addTodos);
     setFilteList(addTodos);
   }
 
-  const onSearch = (value: String) => {
-    const searchTodos = filterList.filter(todo => {
+  const onSearch = (value: string) => {
+    const searchTodos = filterList.filter((todo) => {
       return todo.text.toLowerCase().includes(value.toLowerCase())
     })
 
